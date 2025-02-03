@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_nike_shoe_store/signup_screen.dart';
+import 'package:flutter_nike_shoe_store/screen/signup_screen.dart';
+
+import 'begin_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -76,6 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         }
                       });
                     },
+
                     ///if true = visible , else = invisible
                     icon: textStatus ? Icon(Icons.visibility_outlined) : Icon(Icons.visibility_off_outlined),
                   ),
@@ -105,11 +108,19 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF2D96FF),
-                    foregroundColor: Color(0xFFffffff),
-                    fixedSize: Size(double.maxFinite, 45),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.5))),
-                onPressed: () {},
+                  backgroundColor: Color(0xFF2D96FF),
+                  foregroundColor: Color(0xFFffffff),
+                  fixedSize: Size(double.maxFinite, 45),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.5)),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                      builder: (context) => BeginScreen(),
+                    ),
+                    (route) => false,
+                  );
+                },
                 child: Text('Login'),
               ),
 
@@ -122,10 +133,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       foregroundColor: Color(0xFF2D96FF),
                     ),
                     onPressed: () {
-
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => SignupScreen(),),);
-
-
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignupScreen(),
+                        ),
+                      );
                     },
                     child: Text('Create account'),
                   ),

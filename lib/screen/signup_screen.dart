@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_nike_shoe_store/login_screen.dart';
+import 'package:flutter_nike_shoe_store/screen/login_screen.dart';
+
+import 'begin_screen.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -60,7 +62,16 @@ class SignupScreen extends StatelessWidget {
                   fixedSize: Size(double.maxFinite, 45),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.5)),
                 ),
-                onPressed: () {},
+                onPressed: () {
+
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                      builder: (context) => BeginScreen(),
+                    ),
+                        (route) => false,
+                  );
+
+                },
                 child: Text('Signup'),
               ),
               Row(

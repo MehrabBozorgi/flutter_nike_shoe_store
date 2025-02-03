@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_nike_shoe_store/login_screen.dart';
+import 'package:flutter_nike_shoe_store/screen/login_screen.dart';
 
 
 class SplashScreen extends StatefulWidget {
