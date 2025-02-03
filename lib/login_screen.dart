@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_nike_shoe_store/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -120,7 +121,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: TextButton.styleFrom(
                       foregroundColor: Color(0xFF2D96FF),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SignupScreen(),),);
+
+
+                    },
                     child: Text('Create account'),
                   ),
                 ],
