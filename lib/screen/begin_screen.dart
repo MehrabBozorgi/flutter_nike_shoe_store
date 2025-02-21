@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_nike_shoe_store/screen/detail_screen.dart';
 
 import '../model/product_model.dart';
+import 'cart_screen.dart';
 
 class BeginScreen extends StatelessWidget {
   const BeginScreen({super.key});
@@ -84,7 +86,6 @@ class BeginScreen extends StatelessWidget {
                 ),
               ),
 
-
               SizedBox(height: 20),
             ],
           ),
@@ -93,16 +94,137 @@ class BeginScreen extends StatelessWidget {
     );
   }
 }
+
 class NewArrivalItem extends StatelessWidget {
   const NewArrivalItem({super.key, required this.index});
+
   final int index;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: MediaQuery.of(context).size.width * 0.5,
+    return GestureDetector(
+      onTap: () {
+        // Navigator.of(context).push(
+        //   MaterialPageRoute(
+        //     builder: (context) => DetailScreen(
+        //       image: productList[index].image,
+        //       title: productList[index].name,
+        //       price: productList[index].price,
+        //     ),
+        //   ),
+        // );
+
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => DetailScreen(product: productList[index]),
+          ),
+        );
+      },
+      child: Container(
+          width: MediaQuery.of(context).size.width * 0.5,
+          margin: EdgeInsets.symmetric(horizontal: 10),
+          padding: EdgeInsets.only(bottom: 5, top: 5),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Color(0xFFE7F4FF),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Image.asset(
+                  productList[index].image,
+                  width: MediaQuery.of(context).size.width * 0.475,
+                  height: 155,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      productList[index].name,
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Review',
+                              style: TextStyle(fontSize: 14),
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              '4.5',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.orange,
+                              ),
+                            ),
+                            Icon(Icons.star, color: Colors.orange),
+                          ],
+                        ),
+                        IconButton(
+                          style: IconButton.styleFrom(
+                            backgroundColor: Color(0xFF2D96FF),
+                          ),
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      productList[index].price,
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          )),
+    );
+  }
+}
+
+class PopularShoesItem extends StatelessWidget {
+  const PopularShoesItem({super.key, required this.index});
+
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        // Navigator.of(context).push(
+        //   MaterialPageRoute(
+        //     builder: (context) => DetailScreen(
+        //       image: productList[index].image,
+        //       title: productList[index].name,
+        //       price: productList[index].price,
+        //     ),
+        //   ),
+        // );
+
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => DetailScreen(product: productList[index]),
+          ),
+        );
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width,
         margin: EdgeInsets.symmetric(horizontal: 10),
-        padding: EdgeInsets.only(bottom: 5, top: 5),
+        padding: EdgeInsets.only(bottom: 10, top: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15),
@@ -116,22 +238,23 @@ class NewArrivalItem extends StatelessWidget {
               ),
               child: Image.asset(
                 productList[index].image,
-                width: MediaQuery.of(context).size.width * 0.475,
+                width: MediaQuery.of(context).size.width * 0.9,
                 height: 155,
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    productList[index].name,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 5,
                     children: [
+                      Text(
+                        productList[index].name,
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
                       Row(
                         children: [
                           Text(
@@ -150,109 +273,27 @@ class NewArrivalItem extends StatelessWidget {
                           Icon(Icons.star, color: Colors.orange),
                         ],
                       ),
-                      IconButton(
-                        style: IconButton.styleFrom(
-                          backgroundColor: Color(0xFF2D96FF),
-                        ),
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                        ),
+                      Text(
+                        productList[index].price,
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
-                  Text(
-                    productList[index].price,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  IconButton(
+                    style: IconButton.styleFrom(
+                      backgroundColor: Color(0xFF2D96FF),
+                    ),
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
                   ),
                 ],
               ),
-            )
+            ),
           ],
-        ));
-  }
-}
-
-class PopularShoesItem extends StatelessWidget {
-  const PopularShoesItem({super.key, required this.index});
-
-  final int index;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.symmetric(horizontal: 10),
-      padding: EdgeInsets.only(bottom: 10, top: 10),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Color(0xFFE7F4FF),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Image.asset(
-              productList[index].image,
-              width: MediaQuery.of(context).size.width * 0.9,
-              height: 155,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 5,
-                  children: [
-                    Text(
-                      productList[index].name,
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Review',
-                          style: TextStyle(fontSize: 14),
-                        ),
-                        SizedBox(width: 10),
-                        Text(
-                          '4.5',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.orange,
-                          ),
-                        ),
-                        Icon(Icons.star, color: Colors.orange),
-                      ],
-                    ),
-                    Text(
-                      productList[index].price,
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                IconButton(
-                  style: IconButton.styleFrom(
-                    backgroundColor: Color(0xFF2D96FF),
-                  ),
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.add,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -385,11 +426,20 @@ class TopIconSection extends StatelessWidget {
             child: Image.asset('assets/images/hugeicons_menu-circle.png', width: 24),
           ),
         ),
-        Card(
-          color: Colors.white,
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: Icon(Icons.shopping_basket_outlined),
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => CartScreen(),
+              ),
+            );
+          },
+          child: Card(
+            color: Colors.white,
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Icon(Icons.shopping_basket_outlined),
+            ),
           ),
         ),
       ],

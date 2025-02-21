@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_nike_shoe_store/screen/login_screen.dart';
 
+import '../bottom_navigation_bar.dart';
 import 'begin_screen.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -66,7 +67,7 @@ class SignupScreen extends StatelessWidget {
 
                   Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(
-                      builder: (context) => BeginScreen(),
+                      builder: (context) => BottomNavigationBarScreen(),
                     ),
                         (route) => false,
                   );
