@@ -220,35 +220,46 @@ class _DetailScreenState extends State<DetailScreen> {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
                     onPressed: () {
 
+                      // if(cartModel.any((element) => element.id == widget.product.id)){
+                      //
+                      //   print('HAST');
+                      //
+                      //
+                      // }
+                      // else{
+                      //
+                      //   print('NIST');
+                      //
+                      // }
+
 
 
                       cartModel.add(
                         CartModel(
+                          id: widget.product.id,
                           name: widget.product.name,
                           price: widget.product.price,
                           image: widget.product.image,
                           count: 1,
                         ),
                       );
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //   SnackBar(
+                      //     content: Text(
+                      //       "Your order submitted",
+                      //       style: TextStyle(color: Colors.white),
+                      //     ),
+                      //     backgroundColor: Colors.green,
+                      //     behavior: SnackBarBehavior.floating,
+                      //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+                      //     duration: Duration(seconds: 10),
+                      //   ),
+                      // );
 
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            "Your order submitted",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          backgroundColor: Colors.green,
-                          behavior: SnackBarBehavior.floating,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                          duration: Duration(seconds: 10),
-                        ),
-                      );
-
-
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => CartScreen()),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => CartScreen()),
+                      // );
                     },
                     child: Text(
                       'Add to Cart',
