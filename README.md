@@ -1,16 +1,6 @@
 # flutter_nike_shoe_store
 
-A new Flutter project.
+صفحاتی که در این فصل از دوره آموزش داده شده
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Frame 2 (2)](https://github.com/user-attachments/assets/761b6741-3e3e-497d-b309-68a50a4261f0)
